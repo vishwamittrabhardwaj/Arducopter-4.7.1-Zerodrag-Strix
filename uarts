@@ -1,0 +1,23 @@
+# Zerodrag Strix H7 & Matek H743 Port Mapping (ArduPilot)
+
+| Board Silk Screen Label | ArduPilot Parameter | Default / Recommended Purpose | Special Hardware Notes |
+| :--- | :--- | :--- | :--- |
+| USB Port | SERIAL0 | System Console / Mission Planner | Direct connection to PC workstation |
+| UART7 (T7 / R7) | SERIAL1 | Telemetry 1 (GCS Telemetry Radio) | Includes CTS/RTS hardware flow control lines |
+| UART1 (T1 / R1) | SERIAL2 | Telemetry 2 / Companion Computer | Clean DMA-capable high-speed port |
+| UART2 (T2 / R2) | SERIAL3 | GPS 1 (Primary Compass/GNSS) | Clean DMA-capable standard navigation port |
+| UART3 (T3 / R3) | SERIAL4 | GPS 2 / Auxiliary Peripherals | General purpose hardware UART |
+| UART8 (T8 / R8) | SERIAL5 | ESC Telemetry / User Peripherals | General purpose hardware UART |
+| UART4 (T4 / R4) | SERIAL6 | VTX Control / Peripherals | General purpose hardware UART |
+| UART6 (TX6 / RX6) | SERIAL7 | RC Input (ELRS / CRSF / SBUS) | Requires BRD_ALT_CONFIG = 1 to free the RX6 trace |
+
+## Quick Protocol Configuration Reference (SERIALx_PROTOCOL)
+Assign these numeric values to your chosen SERIAL parameter to set the port's function:
+
+* -1 = Disabled
+* 1  = MAVLink 1
+* 2  = MAVLink 2 (Default for Telemetry links)
+* 5  = GPS / GNSS
+* 16 = ESC Telemetry (RPM / Temperature data filtering)
+* 23 = RC Input (Required for ExpressLRS in CRSF Mode)
+* 42 = DisplayPort (Required for DJI OSD / Walksnail / HDZero video links)
